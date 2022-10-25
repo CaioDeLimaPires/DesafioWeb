@@ -1,0 +1,53 @@
+﻿@using ControleDePedidos.Models
+@model List<PedidosModel>
+@{
+    ViewData["Title"] = "Solicitação";
+}
+
+<div class="text-center">
+    @*Botão de solicitação de pedidos*@
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-outline-success" role="button" asp-controller="Solicitacao" asp-action="Cadastrar">Cadastrar novos pedidos</a>
+    </div>
+    <br />
+
+    <h1 class="display-4">Lista de Solicitações</h1>
+    
+    @*Tabela de exibição dos dados*@
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Data/hora</th>               
+                <th scope="col">Editar/Cancelar</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model !=null && Model.Any())
+            {
+                foreach (PedidosModel pedido in Model)
+                {
+                    <tr>
+                        <th scope="row">@pedido.Id</th>
+                        <td>@pedido.Nome</td>
+                        <td>@pedido.Marca</td>
+                        <td>@pedido.Quantia</td>
+                        <td>@pedido.Valor</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-sm btn-outline-dark" asp-route-id="@pedido.Id" asp-controller="Solicitacao" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-sm btn-outline-danger" asp-route-id="@pedido.Id" asp-controller="Solicitacao" asp-action="Editar">Editar</a>
+                            </div>
+                        </td>
+                      
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

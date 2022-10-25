@@ -1,0 +1,43 @@
+﻿@using ControleDePedidos.Models
+@model PedidosModel
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+
+<div class="text-center">
+
+    <h1 class="display-4">Realizar Pedido</h1>
+
+</div>
+
+<form asp-controller="Solicitacao" asp-action="Cadastrar" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do produto">
+    </div>
+
+    <div class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" asp-for="Marca" class="form-control" placeholder="Digite a marca do produto">
+    </div>
+
+    <div class="form-group">
+        <label for="quantia">Quantia</label>
+        <input type="text" asp-for="Quantia" class="form-control" placeholder="Digite a quantia do produto">
+    </div>
+
+    <div class="form-group">
+        <label for="valor">Valor</label>
+        <input type="text" asp-for="Valor" class="form-control" placeholder="Digite o valor do produto">
+    </div>
+    <br />
+    @if (Model.Data != DateTime.Today)
+    {
+        <button type="submit" class="btn btn-outline-success">Solicitar</button>
+        <a class="btn btn-outline-dark" asp-controller="Solicitacao" asp-action="Index" role="button">Voltar</a>
+    }
+
+
+
+</form>
